@@ -16,7 +16,7 @@ import com.Chess3D.core.board.generalBoardRules;
 public final class Pawn extends Piece {
 
     private final static int[] Possible_Moves = {8, 16, 7, 9};
-    private static int directionInt;
+    private int directionInt;
 
     public Pawn(final int pieceTile, final playerColor pieceColor) {
         super(PieceType.PAWN, pieceTile, pieceColor, true);
