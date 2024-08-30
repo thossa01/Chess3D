@@ -17,7 +17,7 @@ import com.Chess3D.core.pieces.Rook;
 public class BlackPlayer extends Player{
 
     public BlackPlayer(final ChessBoard board, final Collection<Move> blackLegalMoves, final Collection<Move> whiteLegalMoves) {
-        super(board, whiteLegalMoves, blackLegalMoves);
+        super(board, blackLegalMoves, whiteLegalMoves);
     }
 
     @Override
