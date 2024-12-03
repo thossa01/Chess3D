@@ -1,14 +1,5 @@
 package com.Chess3D.core.board;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.Chess3D.core.playerColor;
 import com.Chess3D.core.pieces.Bishop;
 import com.Chess3D.core.pieces.King;
 import com.Chess3D.core.pieces.Knight;
@@ -19,6 +10,14 @@ import com.Chess3D.core.pieces.Rook;
 import com.Chess3D.core.player.BlackPlayer;
 import com.Chess3D.core.player.Player;
 import com.Chess3D.core.player.WhitePlayer;
+import com.Chess3D.core.playerColor;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ChessBoard {
 
@@ -30,6 +29,7 @@ public class ChessBoard {
     private final Player activePlayer;
     private final Collection<Move> whiteLegalMoves;
     private final Collection<Move> blackLegalMoves;
+    private final Pawn enPassantPawn;
 
     private static Collection<Piece> calculateActivePieces(final List<Tile> gameBoard, final playerColor pieceColor) {
         final List<Piece> activePieces = new ArrayList<>();
@@ -53,6 +53,8 @@ public class ChessBoard {
         this.currentGameBoard = createGameBoard(boardBuilder);
         this.whitePieces = calculateActivePieces(this.currentGameBoard, playerColor.WHITE);
         this.blackPieces = calculateActivePieces(this.currentGameBoard, playerColor.BLACK);
+
+        this.enPassantPawn = boardBuilder.EnPassantPawn;
 
         this.whiteLegalMoves = calculateLegalMoves(this.whitePieces);
         this.blackLegalMoves = calculateLegalMoves(this.blackPieces);
@@ -113,7 +115,7 @@ public class ChessBoard {
         boardBuilder.setPiece(new Knight(1, playerColor.BLACK));
         boardBuilder.setPiece(new Bishop(2, playerColor.BLACK));
         boardBuilder.setPiece(new Queen(3, playerColor.BLACK));
-        boardBuilder.setPiece(new King(4, playerColor.BLACK));
+        boardBuilder.setPiece(new King(4, playerColor.BLACK, true, true));
         boardBuilder.setPiece(new Bishop(5, playerColor.BLACK));
         boardBuilder.setPiece(new Knight(6, playerColor.BLACK));
         boardBuilder.setPiece(new Rook(7, playerColor.BLACK));
@@ -138,7 +140,7 @@ public class ChessBoard {
         boardBuilder.setPiece(new Knight(57, playerColor.WHITE));
         boardBuilder.setPiece(new Bishop(58, playerColor.WHITE));
         boardBuilder.setPiece(new Queen(59, playerColor.WHITE));
-        boardBuilder.setPiece(new King(60, playerColor.WHITE));
+        boardBuilder.setPiece(new King(60, playerColor.WHITE, true, true));
         boardBuilder.setPiece(new Bishop(61, playerColor.WHITE));
         boardBuilder.setPiece(new Knight(62, playerColor.WHITE));
         boardBuilder.setPiece(new Rook(63, playerColor.WHITE));
@@ -152,6 +154,12 @@ public class ChessBoard {
         AllLegalMoves.addAll(this.blackLegalMoves);
         return AllLegalMoves;
     }
+
+    public Pawn getEnPassantPawn(){
+        return this.enPassantPawn;
+    }
+
+    
 
 
     public static class BoardBuilder{
@@ -178,11 +186,13 @@ public class ChessBoard {
             return new ChessBoard(this);
         }
 
-        public void EnPassantPawn(final Pawn movedPawn){
+        public BoardBuilder EnPassantPawn(final Pawn movedPawn){
             this.EnPassantPawn = movedPawn;
+            return this;
         }
 
 
 
     }
 }
+
