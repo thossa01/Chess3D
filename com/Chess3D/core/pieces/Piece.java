@@ -53,12 +53,28 @@ public abstract class Piece {
     public playerColor getPieceColor(){
         return pieceColor;
     }
+    public int getPieceValue(){
+        return this.pieceType.getPieceValue();
+    }
     
     public abstract Collection<Move> validMove(final ChessBoard board);
     public abstract Piece movePiece(Move move);
 
     public enum PieceType{
-        PAWN("P"){
+        PAWN("P", 100){
+
+            @Override
+            public boolean isKing(){
+                return false;
+            }
+
+            @Override
+            public boolean isRook(){
+                return false;
+            }
+
+        },
+        KNIGHT("N", 300){
 
             @Override
             public boolean isKing(){
@@ -70,7 +86,7 @@ public abstract class Piece {
                 return false;
             }
         },
-        KNIGHT("N"){
+        BISHOP("B", 300){
 
             @Override
             public boolean isKing(){
@@ -82,19 +98,7 @@ public abstract class Piece {
                 return false;
             }
         },
-        BISHOP("B"){
-
-            @Override
-            public boolean isKing(){
-                return false;
-            }
-
-            @Override
-            public boolean isRook(){
-                return false;
-            }
-        },
-        ROOK("R"){
+        ROOK("R", 500){
 
             @Override
             public boolean isKing(){
@@ -106,7 +110,7 @@ public abstract class Piece {
                 return true;
             }
         },
-        QUEEN("Q"){
+        QUEEN("Q", 900){
 
             @Override
             public boolean isKing(){
@@ -118,7 +122,7 @@ public abstract class Piece {
                 return false;
             }
         },
-        KING("K"){
+        KING("K", 10000){
 
             @Override
             public boolean isKing(){
@@ -131,8 +135,10 @@ public abstract class Piece {
             }
         };
 
-        private final String name;
-        PieceType(String name){
+        private String name;
+        private int pieceValue;
+        PieceType(final String name, final int pieceValue){
+            this.pieceValue = pieceValue;
             this.name = name;
         }
 
@@ -144,7 +150,13 @@ public abstract class Piece {
         public abstract boolean isKing();
 
         public abstract boolean isRook();
+
+        public int getPieceValue(){
+            return this.pieceValue;
+        }
         
     } 
 }
+
+
 
