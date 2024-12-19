@@ -9,7 +9,6 @@ import java.util.List;
 import com.Chess3D.core.playerColor;
 import com.Chess3D.core.board.ChessBoard;
 import com.Chess3D.core.board.Move;
-import com.Chess3D.core.board.Move.attackingMove;
 import com.Chess3D.core.board.Move.normalMove;
 import com.Chess3D.core.board.Tile;
 import com.Chess3D.core.board.generalBoardRules;
@@ -32,7 +31,7 @@ public class Queen extends Piece {
         for (final int currentMove : Possible_Moves) {
             possibleDestination = this.pieceTile;
             while(isValidTileCoordinate(possibleDestination)){
-                if (firstColumnPos(this.pieceTile, currentMove) ||  eighthColumnPos(this.pieceTile, currentMove)) {
+                if (firstColumnPos(possibleDestination, currentMove) ||  eighthColumnPos(possibleDestination, currentMove)) {
                     break;
                 }
 
@@ -46,7 +45,7 @@ public class Queen extends Piece {
                         final Piece pieceAtDestination = possibleDestinationTile.getPiece();
                         final playerColor pieceColorDestination = pieceAtDestination.getPieceColor();
                         if (this.pieceColor != pieceColorDestination){
-                            validMoves.add(new attackingMove(board, this, possibleDestination, pieceAtDestination));
+                            validMoves.add(new Move.MajorAttackMove(board, this, possibleDestination, pieceAtDestination));
                         }
                         break;
                     }
