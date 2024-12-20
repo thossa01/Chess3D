@@ -1,11 +1,5 @@
 package com.Chess3D.core.player;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-
-import com.Chess3D.core.playerColor;
 import com.Chess3D.core.board.ChessBoard;
 import com.Chess3D.core.board.Move;
 import com.Chess3D.core.board.Move.KingSideCastleMove;
@@ -13,6 +7,11 @@ import com.Chess3D.core.board.Move.QueenSideCastleMove;
 import com.Chess3D.core.board.Tile;
 import com.Chess3D.core.pieces.Piece;
 import com.Chess3D.core.pieces.Rook;
+import com.Chess3D.core.playerColor;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class BlackPlayer extends Player{
 
