@@ -78,8 +78,16 @@ public abstract class Player {
         return this.isKingCheck && !haslegalEscapeMoves();
     }
 
-    public boolean CastMove(){
-        return false;
+    public boolean isCastled() {
+        return this.playerKing.isCastled();
+    }
+
+    public boolean isKingSideCastleCapable() {
+        return this.playerKing.isKingSideCastleCapable();
+    }
+
+    public boolean isQueenSideCastleCapable() {
+        return this.playerKing.isQueenSideCastleCapable();
     }
 
     public movementOnBoard movePiece(Move move){
