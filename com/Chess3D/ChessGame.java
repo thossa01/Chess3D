@@ -6,8 +6,7 @@ import com.Chess3D.gui.Table;
 public class ChessGame {
 
     public static void main(String[] args) {
-        ChessBoard board = ChessBoard.createStandardBoard();
-        System.out.println(board);
-        Table table = new Table();
+
+        Table.get().show();
     }
 }
