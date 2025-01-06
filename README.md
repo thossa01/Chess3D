@@ -1,4 +1,4 @@
-With this prohject, I:
+With this project, I:
 
 •	Developed a chess engine with move highlighters and board flipping capabilities to enhance player interaction and provide a dynamic, customizable user interface.
 •	Implemented a computer AI algorithm capable of mimicking human-like moves, enabling users to play against a simulated computer opponent with adjustable difficulty levels.
