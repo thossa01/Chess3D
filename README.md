@@ -1,3 +1,8 @@
+With this prohject, I:
+
+•	Developed a chess engine with move highlighters and board flipping capabilities to enhance player interaction and provide a dynamic, customizable user interface.
+•	Implemented a computer AI algorithm capable of mimicking human-like moves, enabling users to play against a simulated computer opponent with adjustable difficulty levels.
+•	Engineered a real-time move visualization feature, allowing users to easily track and highlight legal and invalid moves on the chessboard.
 
 
 To compile the project, you can do either:
